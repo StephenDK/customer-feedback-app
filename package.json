@@ -1,0 +1,22 @@
+{
+  "name": "customer-feedback-app",
+  "version": "1.0.0",
+  "description": "Customer feedback application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephenDK/customer-feedback-app.git"
+  },
+  "author": "Stephen Klein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StephenDK/customer-feedback-app/issues"
+  },
+  "homepage": "https://github.com/StephenDK/customer-feedback-app#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
