@@ -3,10 +3,10 @@ const express = require('express');
 // express instance
 const app = express();
 // PORT
-var PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Home route handler
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send({hi: 'there'});
 });
 
@@ -16,5 +16,5 @@ app.get('/', (req,res) => {
 
 // set server to listen
 app.listen(PORT, function() {
-    console.log("Application listening on port: " + PORT);
+    console.log("Application listening on " + "localhost:" + PORT);
 });
