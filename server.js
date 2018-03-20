@@ -8,6 +8,12 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // Import Google+ API keys *Passport step 4*
 const keys = require('./config/keys');
 
+// express instance
+const app = express();
+
+// PORT
+const PORT = process.env.PORT || 5000;
+
 // New passport instance *Passport step 3*
 passport.use(new GoogleStrategy({
         clientID: keys.googleClientID,
@@ -18,18 +24,11 @@ passport.use(new GoogleStrategy({
         console.log(accessToken);
     })
 );
-
-
-// express instance
-const app = express();
-
-// PORT
-const PORT = process.env.PORT || 5000;
-
-
-
-
-
+// Setup authentication route handler *Passport step 5*
+app.get('/auth/google', passport.authenticate('google', {
+        scope: ['profile', 'email']
+    })
+);
 
 
 // set server to listen
