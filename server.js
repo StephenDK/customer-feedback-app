@@ -3,7 +3,7 @@ const express = require('express');
 
 // Import passport *Passport step 1*
 const passport = require('passport');
-// Google passport Strategy *Passport step 2*
+// Import Google passport Strategy *Passport step 2*
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 // New passport instance *Passport step 3*
