@@ -24,6 +24,9 @@ passport.use(new GoogleStrategy({
         console.log(accessToken);
     })
 );
+
+app.get('/auth/google/callback', passport.authenticate('google'));
+
 // Setup authentication route handler *Passport step 5*
 app.get('/auth/google', passport.authenticate('google', {
         scope: ['profile', 'email']
