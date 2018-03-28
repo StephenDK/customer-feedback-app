@@ -1,8 +1,14 @@
 // Import express library
 const express = require('express');
+// Require mongoose
+const mongoose = require('mongoose');
 // require passport service
 require('./services/passport');
 
+// setup mongoose to use promise
+mongoose.Promise = Promise;
+// connect to Mongo DB
+mongoose.connect("mongodb://localhost/customerService");
 
 // express instance
 const app = express();
