@@ -2,6 +2,14 @@
 const express = require('express');
 // Require mongoose
 const mongoose = require('mongoose');
+// DATABASE MODELS
+require('./models/User');
+
+/****NOTE*****
+The order of module requires can make and break an application.
+In this instance if you require passport before requiring 
+the mongoose model before we define the model. */
+
 // require passport service
 require('./services/passport');
 
