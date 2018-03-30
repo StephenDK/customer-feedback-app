@@ -17,7 +17,15 @@ const User = mongoose.model('users');
         // Callback URL
         callbackURL: '/auth/google/callback'
     }, function (accessToken, refreshToken, profile, done) {
-    //    Create a new model instance and save to db
-        new User({ googleId: profile.id }).save();
+        // Query datbase to find if user exists
+        User.findOne({ googleId: profile.id })
+            .then((existingUser) => {
+                if (existingUser) {
+                    // We already have a record with the user id
+                } else {
+                    // We dont have a record with this id, create new user
+                    new User({ googleId: profile.id }).save();
+                }
+            })
     })
 );
