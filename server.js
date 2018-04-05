@@ -4,6 +4,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 // DATABASE MODELS
 require('./models/User');
+// require cookie-session package
+const cookieSession = require('cookie-session');
+// require passport 
+const passport = require('passport');
 
 /****NOTE*****
 The order of module requires can make and break an application.
@@ -20,6 +24,14 @@ mongoose.connect("mongodb://localhost/customerService");
 
 // express instance
 const app = express();
+// tell express to use cookie-sessions
+app.use(
+    cookieSession({
+        // Last 30 days before expire
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        keys: [keys.cookieKey]
+    })
+);
 
 // import auth routes
 require('./routes/authRoutes')(app);

@@ -9,8 +9,21 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+// Turns mongo model with user id into a cookie
 passport.serializeUser((user, done) => {
+    // done is a callback called after passport work has been done
+    // 1st argument is an error argument
+    // 2nd argument identifies the user assigned by mongo
+    done(null, user.id);
+});
 
+// deserializeUser function
+// turns cookie back into a mongo model
+passport.deserializeUser((id, done) => {
+    User.findById(id)
+    .then(user => {
+        done(null, user);
+    })
 });
 
 // New passport instance *Passport step 3*
