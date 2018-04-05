@@ -8,6 +8,7 @@ require('./models/User');
 const cookieSession = require('cookie-session');
 // require passport 
 const passport = require('passport');
+const keys = require('./config/keys');
 
 /****NOTE*****
 The order of module requires can make and break an application.
@@ -32,6 +33,10 @@ app.use(
         keys: [keys.cookieKey]
     })
 );
+// Tell express to use passport to handle oauth
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // import auth routes
 require('./routes/authRoutes')(app);
