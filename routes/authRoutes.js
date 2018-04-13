@@ -9,6 +9,13 @@ module.exports = (app) => {
             scope: ['profile', 'email']
         })
     );
+
+    // Log user out
+    app.get('/api/logout', (req, res) => {
+        req.logout();
+        res.send(req.user);
+    });
+
     // This code sends the google profile user code to google
     // and returns the profile information information od the user
     app.get('/auth/google/callback', passport.authenticate('google'));
