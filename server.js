@@ -3,7 +3,7 @@ const express = require('express');
 // Require mongoose
 const mongoose = require('mongoose');
 // DATABASE MODELS
-require('./models/User');
+require('./models/user.js');
 // require cookie-session package
 const cookieSession = require('cookie-session');
 // require passport 
