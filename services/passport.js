@@ -31,7 +31,8 @@ passport.deserializeUser((id, done) => {
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
         // Callback URL
-        callbackURL: '/auth/google/callback'
+        callbackURL: '/auth/google/callback',
+        proxy: true
     }, function (accessToken, refreshToken, profile, done) {
         // Query datbase to find if user exists
         User.findOne({ googleId: profile.id })
