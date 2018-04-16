@@ -12,6 +12,7 @@ const App = () => {
         <div>
             <BrowserRouter>
                 <div>
+                    {/* This header component will display on every */}
                     <Header />
                      {/* Use the exact key word or exact={true} to keep components from 
                     displaying on the same page */}

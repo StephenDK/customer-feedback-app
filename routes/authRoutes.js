@@ -18,7 +18,12 @@ module.exports = (app) => {
 
     // This code sends the google profile user code to google
     // and returns the profile information information od the user
-    app.get('/auth/google/callback', passport.authenticate('google'));
+    app.get('/auth/google/callback', 
+    passport.authenticate('google'),
+    (req, res) => {
+        res.redirect('/dashboard');
+    }
+);
 
 
     app.get('/api/current_user', (req, res) => {
