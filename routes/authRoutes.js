@@ -25,7 +25,8 @@ module.exports = (app) => {
     }
 );
 
-
+    // If the current user is signed into the application
+    // this route is used to determine if the user is signed in
     app.get('/api/current_user', (req, res) => {
         res.send(req.user);
     })
