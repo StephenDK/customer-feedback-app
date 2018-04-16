@@ -13,7 +13,7 @@ module.exports = (app) => {
     // Log user out
     app.get('/api/logout', (req, res) => {
         req.logout();
-        res.send(req.user);
+        res.redirect('/');
     });
 
     // This code sends the google profile user code to google
@@ -22,12 +22,10 @@ module.exports = (app) => {
     passport.authenticate('google'),
     (req, res) => {
         res.redirect('/dashboard');
-    }
-);
+    });
 
     // If the current user is signed into the application
     // this route is used to determine if the user is signed in
     app.get('/api/current_user', (req, res) => {
         res.send(req.user);
-    })
-};
+    })};
