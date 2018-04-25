@@ -8,3 +8,5 @@ export default function(state = null, action) {
         return state;
     }
 }
+
+// Setup authReducer to return either 3 values null, false, action.payload(user model)

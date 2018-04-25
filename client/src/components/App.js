@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
+import Landing from './Landing';
 const Dashboard = () => <h2>Dashboard</h2>
 const SurveyNew = () => <h2>SurveyNew</h2>
-const Landing = () => <h2>Landing</h2>
+
 
 class App extends Component {
     componentDidMount() {
@@ -34,3 +35,8 @@ class App extends Component {
 };
 
 export default connect(null, actions) (App);
+
+// When to app boots up the App component will call the action creator
+// The action creator will make the AJAX request.
+// Once the request is resolved we will gain access to the dispatch function which will dispatch an action
+// the action will be sent to our reducers

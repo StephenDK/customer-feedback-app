@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 // import the connect helper from react-redux
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     renderContent() {
@@ -21,7 +22,14 @@ class Header extends Component {
         return (
             <nav>
                 <div className='nav-wrapper'>
-                    <a className='left brand-logo'>CustomerServer</a>
+                    <Link 
+                    // If user is signed in return dashboard or
+                    // if user is not signed in return homeroot route
+                    // ternary operator
+                    to={this.props.auth ? '/dashboard' : '/'} 
+                    className='left brand-logo'>
+                    CustomerServer
+                    </Link>
                     <ul className='right'>
                         {this.renderContent()}
                     </ul>

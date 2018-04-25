@@ -9,7 +9,7 @@ import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 
 import App from './components/App';
-// redux store 
+// creates redux store 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 // wire up app with the provider tag from react-redux
