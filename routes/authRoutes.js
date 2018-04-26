@@ -21,7 +21,7 @@ module.exports = (app) => {
     app.get('/auth/google/callback', 
     passport.authenticate('google'),
     (req, res) => {
-        res.redirect('https://quiet-badlands-38905.herokuapp.com/dashboard');
+        res.redirect('/dashboard');
     });
 
     // If the current user is signed into the application
