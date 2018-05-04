@@ -8,6 +8,7 @@ require('./models/user.js');
 const cookieSession = require('cookie-session');
 // require passport 
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
 /****NOTE*****
@@ -24,6 +25,10 @@ mongoose.connect(keys.mongoURI);
 
 // express instance
 const app = express();
+
+// tell the app to use body-parser
+app.use(bodyParser.json());
+
 // tell express to use cookie-sessions
 app.use(
     cookieSession({
