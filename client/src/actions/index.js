@@ -2,10 +2,20 @@ import axios from 'axios';
 import { FETCH_USER } from './types';
 
 export const fetchUser = () => async dispatch => {
-        const res = await axios.get('/api/current_user')
-        
-        dispatch({ type: FETCH_USER, payload: res.data })
-    };  
+    const res = await axios.get('/api/current_user')
+    
+    dispatch({ type: FETCH_USER, payload: res.data })
+};  
+
+// creat a new action creator to send the token received from stripe
+// and send it to the server on the back end
+export const handleToken = (token) => async dispatch => {
+// make a post request to the back end server 
+    const res = await axios.post('/api/stripe', token);
+
+    // server sends back the update user model in the payload 
+    dispatch({ type: FETCH_USER, payload: res.data });
+};
 
 
 /*  An action is a javascript object with a type property 

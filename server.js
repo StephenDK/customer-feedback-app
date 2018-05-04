@@ -39,6 +39,8 @@ app.use(passport.session());
 
 // import auth routes
 require('./routes/authRoutes')(app);
+// billing routes
+require('./routes/billingRoutes')(app);
 
 // PORT
 const PORT = process.env.PORT || 5000;
