@@ -4,6 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 // DATABASE MODELS
 require('./models/User.js');
+require('./models/Survey.js');
+// ================================================= 
 // require cookie-session package
 const cookieSession = require('cookie-session');
 // require passport 
