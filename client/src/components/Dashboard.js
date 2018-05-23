@@ -1,13 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 
 const Dashboard = () => {
     return (
       <div>
         Dashboard
         <div className='fixed-action-btn'>
-            <a className='btn-floating btn-large green'>
+            <Link to="/dashboard/newsurvey" className='btn-floating btn-large green'>
                 <i className='material-icons'>add</i>
-            </a>
+            </Link>
         </div>
       </div>
     )
