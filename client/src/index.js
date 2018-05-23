@@ -5,10 +5,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
-// import reducers
-import reducers from './reducers';
 
 import App from './components/App';
+// import reducers
+import reducers from './reducers';
+// dev axios helpers
+import axios from 'axios';
+window.axios = axios;
+
+
 // creates redux store 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 

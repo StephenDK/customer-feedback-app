@@ -8,7 +8,12 @@ const Survey = mongoose.model('surveys');
 
 
 module.exports = app => {
-    app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
+
+    app.get('/api/surveys/thanks', (req, res) => {
+        res.send("Thanks for voting!!");
+    })
+
+    app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         // get the props from the req.body
         const { title, subject, body, recipients } = req.body;
 
@@ -23,6 +28,16 @@ module.exports = app => {
 
         // Great place to send an email
         const mailer = new Mailer(survey, surveyTemplate(survey));
+       try {
+            await mailer.send();
+            await survey.save();
+            req.user.credits -= 1;
+            const user = await req.user.save();
+            // send back user model with updated credits 
+            res.send(user)
+       } catch (err) {
+           res.status(422).send(err);
+       }
     });
 
 };
