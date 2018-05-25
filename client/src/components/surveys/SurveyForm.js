@@ -91,13 +91,31 @@ class SurveyForm extends Component {
     )
   }
 }
+// ======================================
+// REDUX FORM SETUP STEP 15:
+// The validate function has a signle argument of values
+// Values is an object with all of the values coming off the form
+function validate(values) {
+  // If redux-form returns an empty error object everything is good to go
+  // else if the errors object contain values it will stop the process 
+  const errors = {};
+
+
+
+  return errors;
+}
+// ======================================
+
+
 
 // ======================================
 // REDUX FORM SETUP STEP 7 cont..:
 // Connect the component to the form store 
 // reduxForm takes object options in its argument
 export default reduxForm({
-  // 
+  // Adding the validate option tells redux form
+  // to run a validate function on the form
+  validate: validate,
   form: 'surveyForm'
 })(SurveyForm);
 // ======================================
