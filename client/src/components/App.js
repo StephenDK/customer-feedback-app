@@ -17,19 +17,17 @@ class App extends Component {
     
     render() {    
         return (
-            <div>
-                <BrowserRouter>
-                    <div className='container'>
-                        {/* This header component will display on every page*/}
-                        <Header />
-                        {/* Use the exact key word or exact={true} to keep components from 
-                        displaying on the same page */}
-                        <Route exact path="/" component={Landing} />
-                        <Route exact path="/dashboard" component={Dashboard} />
-                        <Route path="/dashboard/newsurvey" component={SurveyNew} />
-                    </div>
-                </BrowserRouter>
-            </div>
+            <BrowserRouter>
+                <div className='container'>
+                    {/* This header component will display on every page*/}
+                    <Header />
+                    {/* Use the exact key word or exact={true} to keep components from 
+                    displaying on the same page */}
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route path="/dashboard/newsurvey" component={SurveyNew} />
+                </div>
+            </BrowserRouter>
         );
     }    
 };

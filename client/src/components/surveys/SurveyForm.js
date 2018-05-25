@@ -1,5 +1,6 @@
 // SurveyForm shows a form for a user to add input
 // ======================================
+import { Link } from 'react-router-dom';
 // REDUX FORM SETUP STEP 5:
 // Setup the survey form component
 import _ from 'lodash';
@@ -47,7 +48,15 @@ class SurveyForm extends Component {
           <form 
           onSubmit={this.props.handleSubmit(values => console.log(values))}>
             {this.renderFields()}
-            <button type="submit">Submit</button>
+            <Link to='/dashboard' className='red btn-flat white-text'>
+            Cancel
+            </Link>
+            <button 
+              type="submit"
+              className='teal btn-flat right white-text'>
+              Next
+              <i className='material-icons right'>done</i>
+            </button>
           </form>
         </div>
 
