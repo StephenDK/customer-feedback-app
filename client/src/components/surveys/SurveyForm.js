@@ -99,7 +99,12 @@ function validate(values) {
   // If redux-form returns an empty error object everything is good to go
   // else if the errors object contain values it will stop the process 
   const errors = {};
-
+  // look at the values object and if the user
+  // did not give a title
+  if (!values.title) {
+    // add the title value to the error object and assign a string value
+    errors.title = "You must provide a title";
+  }
 
 
   return errors;
@@ -114,7 +119,7 @@ function validate(values) {
 // reduxForm takes object options in its argument
 export default reduxForm({
   // Adding the validate option tells redux form
-  // to run a validate function on the form
+  // to run a validate function on the form.
   validate: validate,
   form: 'surveyForm'
 })(SurveyForm);

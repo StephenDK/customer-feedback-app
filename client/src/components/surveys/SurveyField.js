@@ -10,8 +10,9 @@ import React from 'react'
 // REDUX FORM SETUP STEP 13:
 // Redux-form passses all its eventHandlers in props
 // The input below is es6 for props.input
-export default ({ input, label }) => {
+export default ({ input, label, meta: { error, touched } }) => {
     // console.log(props); Check this log for eventHandlers
+    // console.log(meta); Check this log for error properties
   return (
     <div>
         <label>{label}</label>
@@ -19,6 +20,7 @@ export default ({ input, label }) => {
          hold the object with all the keys and values in it
          hence ...input*/}
       <input {...input}/>
+      {touched && error}
     </div>
   )
 }
