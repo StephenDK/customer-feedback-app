@@ -2,7 +2,7 @@
 // ======================================
 // REDUX FORM SETUP STEP 5:
 // Setup the survey form component
-
+import _ from 'lodash';
 import React, { Component } from 'react'
 // ======================================
 // REDUX FORM SETUP STEP 7:
@@ -19,21 +19,29 @@ import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 // ======================================
 
+// REDUX FORM SETUP STEP 14:
+// Create an array of objects with all the properties that
+// are different in the renderFields function
+// Also import and setup lodash
+const FIELDS = [
+  { label: "Survey Title", name: "title" },
+  { label: "Subject Line", name: "subject" },
+  { label: "Email Body", name: "body" },
+  { label: "Recipient List", name: "emails" },
+];
 
 class SurveyForm extends Component {
   // ======================================
   // REDUX FORM SETUP STEP 12:
   // The renderField function renders 4 different Fields
     renderFields() {
-      return (
-        <div>
-          <Field type='text' name='title' component={SurveyField} />
-        </div>
-      );
+      return _.map(FIELDS, ({ label, name }) => {
+        return <Field key={name} component={SurveyField} type="text" label={label} name={name} />
+      })
     }
   // ======================================
 
-  render() {
+  render() { 
     return (
         <div>
           <form 
