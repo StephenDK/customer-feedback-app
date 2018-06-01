@@ -101,10 +101,15 @@ function validate(values) {
   const errors = {};
   // look at the values object and if the user
   // did not give a title
-  if (!values.title) {
-    // add the title value to the error object and assign a string value
-    errors.title = "You must provide a title";
-  }
+  // if (!values.title) {
+  //   // add the title value to the error object and assign a string value
+  //   errors.title = "You must provide a title";
+  // }
+  _.each(FIELDS, ({ name }) => {
+    if (!values[name]) {
+      errors[name] = 'You must provide a value';
+    }
+  });
 
 
   return errors;

@@ -19,8 +19,10 @@ export default ({ input, label, meta: { error, touched } }) => {
         {/* to avoid passing specific name properties we can
          hold the object with all the keys and values in it
          hence ...input*/}
-      <input {...input}/>
+      <input {...input} style={{ marginBottom: '5px' }}/>
+      <div className='red-text' style={{ marginBottom: '20px' }}>
       {touched && error}
+      </div>
     </div>
   )
 }
