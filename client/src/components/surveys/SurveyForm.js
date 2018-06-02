@@ -21,23 +21,15 @@ import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 // ======================================
 
-// REDUX FORM SETUP STEP 14:
-// Create an array of objects with all the properties that
-// are different in the renderFields function
-// Also import and setup lodash
-const FIELDS = [
-  { label: "Survey Title", name: "title" },
-  { label: "Subject Line", name: "subject" },
-  { label: "Email Body", name: "body" },
-  { label: "Recipient List", name: "emails" },
-];
+// import the fields array from formFields
+import formFields from './formFields';
 
 class SurveyForm extends Component {
   // ======================================
   // REDUX FORM SETUP STEP 12:
   // The renderField function renders 4 different Fields
     renderFields() {
-      return _.map(FIELDS, ({ label, name }) => {
+      return _.map(formFields, ({ label, name }) => {
         return <Field key={name} component={SurveyField} type="text" label={label} name={name} />
       })
     }
@@ -109,7 +101,7 @@ function validate(values) {
   //   // add the title value to the error object and assign a string value
   //   errors.title = "You must provide a title";
   // }
-  _.each(FIELDS, ({ name }) => {
+  _.each(formFields, ({ name }) => {
     if (!values[name]) {
       errors[name] = 'You must provide a value';
     }
@@ -129,6 +121,8 @@ export default reduxForm({
   // Adding the validate option tells redux form
   // to run a validate function on the form.
   validate: validate,
+  // from: surveyForm tells redux form how to correctly manage all the
+  // values from this perticular form inside of our app from reducer
   form: 'surveyForm',
   // destroy on unmount tells redux to not dump form values
   // after the component unmounts
