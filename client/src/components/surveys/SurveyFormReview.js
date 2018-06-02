@@ -1,5 +1,13 @@
 // Survey form review shows users their form inputs for review 
 import React from 'react';
+// ======================================
+// REDUX FORM SETUP STEP 18:
+// We have to get all of the form data from the redux store and
+// then render it onto the page.
+// first import and wire up the connect helper
+import { connect } from 'react-redux';
+// ======================================
+
 
 const SurveyFormReview = ({ onCancel }) => {
     return (
@@ -13,5 +21,13 @@ const SurveyFormReview = ({ onCancel }) => {
 
     )
 };
+// After connect component to the redux store 
+// use mapStateToProps function to get data
+function mapStateToProps(state) {
+    // you can check how the form data is stored by clearing the 
+    // comment on the console.log
+    // console.log(state);
+    return { formValues: state.form.surveyForm.values};
+}
 
-export default SurveyFormReview;
+export default connect(mapStateToProps)(SurveyFormReview);

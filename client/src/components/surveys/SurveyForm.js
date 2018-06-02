@@ -129,7 +129,10 @@ export default reduxForm({
   // Adding the validate option tells redux form
   // to run a validate function on the form.
   validate: validate,
-  form: 'surveyForm'
+  form: 'surveyForm',
+  // destroy on unmount tells redux to not dump form values
+  // after the component unmounts
+  destroyOnUnmount: false
 })(SurveyForm);
 // ======================================
 
