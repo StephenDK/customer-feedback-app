@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // REDUX FORM SETUP STEP 5:
 // Setup the survey form component
 import _ from 'lodash';
+import validateEmails from '../../utils/validateEmails';
 import React, { Component } from 'react'
 // ======================================
 // REDUX FORM SETUP STEP 7:
@@ -99,6 +100,9 @@ function validate(values) {
   // If redux-form returns an empty error object everything is good to go
   // else if the errors object contain values it will stop the process 
   const errors = {};
+
+  errors.emails = validateEmails(values.emails || '');
+  
   // look at the values object and if the user
   // did not give a title
   // if (!values.title) {
@@ -110,7 +114,6 @@ function validate(values) {
       errors[name] = 'You must provide a value';
     }
   });
-
 
   return errors;
 }
