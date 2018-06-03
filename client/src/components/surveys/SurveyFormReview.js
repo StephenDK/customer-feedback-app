@@ -8,17 +8,42 @@ import React from 'react';
 import { connect } from 'react-redux';
 // ======================================
 
+// ======================================
+// REDUX FORM SETUP STEP 19:
+// To create the form review fields first import the formFileds.js file
+// also import lodash to use the map function
+import _ from 'lodash';
+import formFields from './formFields';
+
 
 const SurveyFormReview = ({ onCancel, formValues }) => {
+
+    // map over the field array and for every field run the field array
+const reviewFields = _.map(formFields, field => {
+    return (
+        <div key={field.name}>
+            <label>{field.label}</label>
+            <div>
+                {formValues[field.name]}
+            </div>
+        </div>
+    );
+});
+
+// ======================================
+
     return (
         <div>
             <h5>Please confirm your entries</h5>
-            <div>
+            {reviewFields}
+            {/* To create the form review we can copy the code below 
+            4x or we can map over the fields array like above  */}
+            {/* <div>
                 <div>
                     <label>Survey Title</label>
                     <div>{formValues.title}</div>
                 </div>
-            </div>
+            </div> */}
             <button
             className='yellow darken-3 btn-flat' onClick={onCancel}>
             Back
