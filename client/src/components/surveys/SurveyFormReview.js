@@ -7,10 +7,18 @@ import React from 'react';
 // first import and wire up the connect helper
 import { connect } from 'react-redux';
 // ======================================
+// REDUX FORM SETUP STEP 21: cont..
 // import action creators
 import * as actions from '../../actions';
 
 // ======================================
+// ======================================
+// REDUX FORM SETUP STEP 23:
+// import withRouter function from react-router-dom
+import { withRouter } from 'react-router-dom';
+
+// ======================================
+
 // REDUX FORM SETUP STEP 19:
 // To create the form review fields first import the formFileds.js file
 // also import lodash to use the map function
@@ -19,7 +27,7 @@ import formFields from './formFields';
 
 
 
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
 
     // map over the field array and for every field run the field array
 const reviewFields = _.map(formFields, field => {
@@ -55,7 +63,7 @@ const reviewFields = _.map(formFields, field => {
             // REDUX FORM SETUP STEP 21: cont..
             // If we do not wrap the submitSurvey() in arrow function
             // as soon as the coponents render survey will submit
-            onClick={() => submitSurvey(formValues) }
+            onClick={() => submitSurvey(formValues, history) }
             className='green btn-flat white-text right'
             >
                 Send Survey
@@ -75,7 +83,18 @@ function mapStateToProps(state) {
     return { formValues: state.form.surveyForm.values};
 }
 
-
+// ======================================
 // REDUX FORM SETUP STEP 21: cont..
 // pass actions into second connect argument
-export default connect(mapStateToProps, actions)(SurveyFormReview);
+// ======================================
+// REDUX FORM SETUP STEP 23: cont..
+// wrap the component in the withRouter passing in the component
+// to the function
+// React router adds a history object whick will be passed into component
+// through the component propslist
+// After pass the history object to the eventhandler for submiting
+
+export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
+
+// ======================================
+// ======================================
