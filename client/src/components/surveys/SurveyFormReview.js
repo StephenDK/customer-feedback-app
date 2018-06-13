@@ -7,6 +7,8 @@ import React from 'react';
 // first import and wire up the connect helper
 import { connect } from 'react-redux';
 // ======================================
+// import action creators
+import * as actions from '../../actions';
 
 // ======================================
 // REDUX FORM SETUP STEP 19:
@@ -14,9 +16,10 @@ import { connect } from 'react-redux';
 // also import lodash to use the map function
 import _ from 'lodash';
 import formFields from './formFields';
+import { submitSurvey } from '../../actions';
 
 
-const SurveyFormReview = ({ onCancel, formValues }) => {
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
 
     // map over the field array and for every field run the field array
 const reviewFields = _.map(formFields, field => {
@@ -45,8 +48,18 @@ const reviewFields = _.map(formFields, field => {
                 </div>
             </div> */}
             <button
-            className='yellow darken-3 btn-flat' onClick={onCancel}>
+            className='yellow white-text darken-3 btn-flat' onClick={onCancel}>
             Back
+            </button>
+            <button 
+            // REDUX FORM SETUP STEP 21: cont..
+            // If we do not wrap the submitSurvey() in arrow function
+            // as soon as the coponents render survey will submit
+            onClick={() => submitSurvey(formValues) }
+            className='green btn-flat white-text right'
+            >
+                Send Survey
+                <i className='material-icons right'>email</i>
             </button>
         </div>
 
@@ -62,4 +75,7 @@ function mapStateToProps(state) {
     return { formValues: state.form.surveyForm.values};
 }
 
-export default connect(mapStateToProps)(SurveyFormReview);
+
+// REDUX FORM SETUP STEP 21: cont..
+// pass actions into second connect argument
+export default connect(mapStateToProps, actions)(SurveyFormReview);

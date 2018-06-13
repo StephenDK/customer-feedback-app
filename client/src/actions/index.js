@@ -30,3 +30,13 @@ state back to all of the components.
 /*The dispatch function sends the action to all the different reducers
 in the store causing an instant recalculate app state
 */
+
+// ===================================
+// REDUX FORM SETUP STEP 21:
+// this action creator is going to be responsible for sumbitting the 
+// survey data.
+// The values arguent will  be passed the form data values
+export const submitSurvey = values => {
+    return { type: 'submit_survey' }
+};
+// ===================================
