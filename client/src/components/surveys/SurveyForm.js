@@ -93,7 +93,7 @@ function validate(values) {
   // else if the errors object contain values it will stop the process 
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || '');
+  errors.recipients = validateEmails(values.emails || '');
   
   // look at the values object and if the user
   // did not give a title
