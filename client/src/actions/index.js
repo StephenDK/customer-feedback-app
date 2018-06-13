@@ -36,7 +36,11 @@ in the store causing an instant recalculate app state
 // this action creator is going to be responsible for sumbitting the 
 // survey data.
 // The values arguent will  be passed the form data values
-export const submitSurvey = values => {
-    return { type: 'submit_survey' }
+export const submitSurvey = values => async dispatch => {
+    // REDUX FORM SETUP STEP 23:
+    const res = await axios.post('/api/surveys', values);
+
+    dispatch({ type: FETCH_USER, payload: res.data })
+    
 };
 // ===================================
