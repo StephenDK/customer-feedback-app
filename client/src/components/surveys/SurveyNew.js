@@ -12,7 +12,11 @@ import React, { Component } from 'react';
 
 import SurveyForm from './SurveyForm';
 import SurveyFormReview from './SurveyFormReview';
-
+// =========================================
+// REDUX FORM SETUP STEP 22: 
+// Import the redux from helper
+import { reduxForm } from 'redux-form';
+// =========================================
 
 class SurveyNew extends Component {
 // =========================================
@@ -51,7 +55,14 @@ renderContent() {
     }
 }
 
-export default SurveyNew;
+
+// REDUX FORM SETUP STEP 22 cont...
+// hook up the redux form helper
+// we wired up this component to survey form and this component is tied to 
+// this form.
+export default  reduxForm({
+    form: 'surveyForm'
+})(SurveyNew);
 
 // =========================================
 

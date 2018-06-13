@@ -16,7 +16,7 @@ import * as actions from '../../actions';
 // also import lodash to use the map function
 import _ from 'lodash';
 import formFields from './formFields';
-import { submitSurvey } from '../../actions';
+
 
 
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
