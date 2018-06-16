@@ -39,5 +39,15 @@ module.exports = app => {
            res.status(422).send(err);
        }
     });
+    // =============================================
+    // WEBHOOKS SETUP STEP 1:
+    // Add npm install --save localtunnel
+    // Add localtunnel to the package.json file scripts
+    // Add localtunnel specified domain from scripts to sendgrid
+    // add a new route handler for the webhook domain
+    app.post('/api/surveys/webhooks', (req, res) => {
+        console.log(req.body);
+        res.send({});
+    });
 
 };
