@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import surveysReducer from './surveysReducer';
 
 // ==========================================
 // REDUX FORM SETUP SET 1:
@@ -15,6 +16,7 @@ export default combineReducers({
     // REDUX FORM SETUP SET 2:
     // Add reduxForm reducer to combineReducers.
     // Use form key to refer to reduxForm reducer
-    form: reduxForm
+    form: reduxForm,
     // ========================================
+    surveys: surveysReducer
 });
