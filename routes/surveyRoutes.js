@@ -17,7 +17,14 @@ const Survey = mongoose.model('surveys');
 
 module.exports = app => {
 
-    app.get('/api/surveys/thanks', (req, res) => {
+    // Get request to fetch all the survey database data
+    app.get('/api/surveys', requireLogin, async (req, res) => {
+        const surveys = await Survey.find({ _user: req.user.id });
+
+        res.send(surveys);
+    });
+
+    app.get('/api/surveys/:surveyId/:choice', (req, res) => {
         res.send("Thanks for voting!!");
     })
 
@@ -58,7 +65,7 @@ module.exports = app => {
         // res.send({});
         const p = new Path('/api/surveys/:surveyId/:choice');
 
-        const events = _.chain(req.body)
+        _.chain(req.body)
             .map(({ email, url }) => {
             
                 // console.log(p.test(pathname));
@@ -71,9 +78,21 @@ module.exports = app => {
     // console.log(events); returns an array of elements
             .compact()
             .uniqBy('email', 'surveyId')
+            .each(({ surveyId, email, choice }) => {
+                Survey.updateOne({
+                    _id: surveyId,
+                    recipients: {
+                        $elemMatch: { email: email, responded: false }
+                    }
+                }, {
+                    $inc: { [choice]: 1 },
+                    $set: { 'recipients.$.responded': true },
+                    lastResponded: new Date()
+                }).exec();
+            })
             .value();
 
-        console.log(events);
+        
         res.send({});
     });
 
